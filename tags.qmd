@@ -1,0 +1,8 @@
+---
+title: 标签
+listing:
+  type: grid
+  sort: "title"
+  contents: posts
+  filter-ui: true  # 启用筛选控件
+---

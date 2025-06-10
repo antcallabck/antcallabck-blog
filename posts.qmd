@@ -1,0 +1,7 @@
+---
+title: 所有文章
+listing:
+  contents: posts
+  sort: "date desc"
+  fields: [title, date, categories, tags]
+---

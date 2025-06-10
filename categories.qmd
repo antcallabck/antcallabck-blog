@@ -1,0 +1,10 @@
+---
+title: "分类目录"
+listing:
+  type: default
+  contents: posts
+  categories: true     # ✅ 开启分类导航
+page-layout: full
+---
+
+这里是所有分类下的文章列表。点击每个分类查看文章。

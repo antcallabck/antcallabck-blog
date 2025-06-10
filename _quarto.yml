@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  search: true
+  title: "果果的博客"
+  navbar:
+    left:
+      - text: 首页
+        href: index.qmd
+      - text: 分类
+        href: categories.qmd
+      - text: 所有文章
+        href: posts.qmd
+      - text: 标签
+        href: tags.qmd
+      - text: 关于
+        href: about.qmd
+listing:
+  contents: posts/**
+format:
+  html:
+    theme:
+      - solar
+    css: styles.css
+    toc: true
+
+
+

@@ -1,0 +1,105 @@
+---
+title: "多种图文混排示例"
+categories: [教程]
+tags: [教程1]
+format: html
+---
+
+# 1. 左图右文（经典对称）
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![左图示意](../images/test.png)
+:::
+
+::: {.column width="60%"}
+这里是文字说明，支持**加粗**、公式 `$E=mc^2$`、代码等。
+
+- 支持列表
+- 支持数学公式
+- 支持代码块
+
+:::
+
+::::
+
+---
+
+# 2. 右图左文（变换节奏）
+
+:::: {.columns}
+
+::: {.column width="60%"}
+这里是文字内容，前文引导。
+
+:::
+
+::: {.column width="40%"}
+![右图示意](../images/test.png)
+:::
+
+::::
+
+---
+
+# 3. 图片环绕文字（float）
+
+<img src="../images/test.png" alt="环绕图" style="float: left; margin: 0 20px 10px 0; width: 300px; border-radius: 8px; box-shadow: 0 0 8px #ccc;">
+
+这段文字会自动环绕图片，适合故事叙述、长段文本说明。注意移动端时可能需要调整样式。
+
+---
+
+# 4. 多图并列 + 说明
+
+:::: {.columns}
+
+::: {.column width="30%"}
+![图1](../images/test.png)
+:::
+
+::: {.column width="30%"}
+![图2](../images/test.png)
+:::
+
+::: {.column width="40%"}
+多张图对比说明，适合展示细节或数据对比。
+
+:::
+
+::::
+
+---
+
+# 5. 图片居中 + 图注
+
+::: {.figure}
+![封面图](../images/test.png)
+:::
+
+---
+
+# 6. 图片加圆角阴影
+
+<img src="../images/test.png" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+
+---
+
+# 7. 文字上下分布，中间插图
+
+第一段文字说明……
+
+![中间插图](../images/test.png)
+
+第二段文字说明……
+
+---
+
+# 8. 代码 + 图片并排（教程演示）
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```python
+print("Hello, Quarto!")

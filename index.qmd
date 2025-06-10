@@ -1,0 +1,11 @@
+---
+title: "果果"
+listing:
+  contents: posts
+  sort: "date desc"
+  fields: [title, date, categories, tags]
+  categories: true     # ✅ 开启分类导航
+page-layout: full
+---
+
+

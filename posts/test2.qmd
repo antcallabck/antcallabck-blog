@@ -1,0 +1,17 @@
+---
+title: "线性代数基础"
+date: 2025-06-09
+categories: [数学]
+tags: [线性代数1, 教程1]
+format: html
+---
+
+这是行内公式 $E=mc^2$。
+这是行内公式 $E=mc^2$。
+这是行内公式 $E=mc^2$。
+这是行内公式 $E=mc^2$。
+这是块级公式：
+
+$$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
