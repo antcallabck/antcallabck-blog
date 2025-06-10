@@ -1,5 +1,5 @@
 ---
-title: "线性代数基础"
+title: "线性代数基础2"
 date: 2025-06-09
 categories: [数学]
 tags: [线性代数1, 教程1]
@@ -15,3 +15,163 @@ format: html
 $$
 \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
 $$
+
+
+
+# JSXGraph 示例
+
+
+<div id="box" style="width: 600px; height: 400px;"></div>
+<div id="jbox" style="width: 600px; height: 400px;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsxgraph@1.4.5/distrib/jsxgraphcore.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsxgraph@1.4.5/distrib/jsxgraph.css" />
+
+
+
+
+<script>
+  var board = JXG.JSXGraph.initBoard('box', {
+    boundingbox: [-5, 5, 5, -5],
+   // axis: true
+  });
+
+  var p1 = board.create('point', [1, 3], {name:'A'});
+  var p2 = board.create('point', [4, 1], {name:'B'});
+  var line = board.create('line', [p1, p2]);
+
+  // 创建圆心点
+  const center = board.create('point', [0, 0], {name: 'O'});
+
+  // 创建圆上的点
+  const pointOnCircle = board.create('point', [3, 0], {name: 'A'});
+
+  // 根据圆心和半径点创建圆
+  const circle = board.create('circle', [center, pointOnCircle], {strokeColor: 'blue'});
+
+    const P = board.create('point', [1, 2], {name: 'P', size: 3, color: 'red'});
+    const m = 1.5;
+    const Q = board.create('point', [P.X() + 1, P.Y() + m], {visible: false});
+    board.create('line', [P, Q], {strokeColor: 'blue'});
+
+
+
+
+
+
+
+
+
+  function setTickLabelColor(color) {
+	var texts = board.containerObj.querySelectorAll('.JXGtext');
+	texts.forEach(el => {
+	  if (el.id.includes('ticks')) {
+	    // 如果是 SVG <text> 元素，用 setAttribute 修改 fill
+	    if (el.tagName.toLowerCase() === 'text') {
+	      el.setAttribute('fill', 'red');
+	    }
+	    // 如果是 HTML <div> 元素，用 style.color 修改颜色
+	    else if (el.tagName.toLowerCase() === 'div') {
+	      el.style.color = 'red';
+	    }
+	  }
+	});
+	stylePointLabels()
+  }
+  function stylePointLabels() {
+    const texts = board.containerObj.querySelectorAll('.JXGtext');
+    texts.forEach(el => {
+      // 点名的 id 通常以 Label 结尾，是 HTML div
+      if (el.id.endsWith('Label') && el.tagName.toLowerCase() === 'div') {
+        el.style.color = 'red';      // 设置字体颜色
+        el.style.opacity = '1';       // 取消半透明
+        el.style.fontWeight = 'bold'; // 额外加粗效果
+      }
+    });
+  }
+
+  // 页面首次绘制后改颜色
+  setTickLabelColor('red');
+
+  // 监听更新，保证动态改色生效
+  board.on('update', () => {
+    setTickLabelColor('red');
+  });
+</script>
+
+
+
+<script>
+  var board = JXG.JSXGraph.initBoard('jbox', {
+    boundingbox: [-5, 5, 5, -5],
+   // axis: true
+  });
+
+  var p1 = board.create('point', [1, 3], {name:'A'});
+  var p2 = board.create('point', [4, 1], {name:'B'});
+  var line = board.create('line', [p1, p2]);
+
+  // 创建圆心点
+  const center = board.create('point', [0, 0], {name: 'O'});
+
+  // 创建圆上的点
+  const pointOnCircle = board.create('point', [3, 0], {name: 'A'});
+
+  // 根据圆心和半径点创建圆
+  const circle = board.create('circle', [center, pointOnCircle], {strokeColor: 'blue'});
+
+    const P = board.create('point', [1, 2], {name: 'P', size: 3, color: 'red'});
+    const m = 1.5;
+    const Q = board.create('point', [P.X() + 1, P.Y() + m], {visible: false});
+    board.create('line', [P, Q], {strokeColor: 'blue'});
+
+
+
+
+
+
+
+
+
+  function setTickLabelColor(color) {
+	var texts = board.containerObj.querySelectorAll('.JXGtext');
+	texts.forEach(el => {
+	  if (el.id.includes('ticks')) {
+	    // 如果是 SVG <text> 元素，用 setAttribute 修改 fill
+	    if (el.tagName.toLowerCase() === 'text') {
+	      el.setAttribute('fill', 'red');
+	    }
+	    // 如果是 HTML <div> 元素，用 style.color 修改颜色
+	    else if (el.tagName.toLowerCase() === 'div') {
+	      el.style.color = 'red';
+	    }
+	  }
+	});
+	stylePointLabels()
+  }
+  function stylePointLabels() {
+    const texts = board.containerObj.querySelectorAll('.JXGtext');
+    texts.forEach(el => {
+      // 点名的 id 通常以 Label 结尾，是 HTML div
+      if (el.id.endsWith('Label') && el.tagName.toLowerCase() === 'div') {
+        el.style.color = 'red';      // 设置字体颜色
+        el.style.opacity = '1';       // 取消半透明
+        el.style.fontWeight = 'bold'; // 额外加粗效果
+      }
+    });
+  }
+
+  // 页面首次绘制后改颜色
+  setTickLabelColor('red');
+
+  // 监听更新，保证动态改色生效
+  board.on('update', () => {
+    setTickLabelColor('red');
+  });
+</script>
+
+
+
+
+
+

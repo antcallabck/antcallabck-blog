@@ -1,0 +1,105 @@
+---
+title: "JSXGraph 三角形 Demo"
+format: html
+date: 2025-06-09
+---
+
+<div id="box" style="width: 600px; height: 400px;"></div>
+<div id="jbox" style="width: 600px; height: 400px;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsxgraph@1.4.5/distrib/jsxgraphcore.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsxgraph@1.4.5/distrib/jsxgraph.css" />
+
+
+
+
+<script>
+
+ var board = JXG.JSXGraph.initBoard('jbox', {
+    boundingbox: [-5, 5, 5, -5],
+   // axis: true
+  });
+
+  var p1 = board.create('point', [1, 3], {name:'A'});
+  var p2 = board.create('point', [4, 1], {name:'B'});
+  var line = board.create('line', [p1, p2]);
+
+  // 创建圆心点
+  const center = board.create('point', [0, 0], {name: 'O'});
+
+  // 创建圆上的点
+  const pointOnCircle = board.create('point', [3, 0], {name: 'A'});
+
+  // 根据圆心和半径点创建圆
+  const circle = board.create('circle', [center, pointOnCircle], {strokeColor: 'blue'});
+
+    const P = board.create('point', [1, 2], {name: 'P', size: 3, color: 'red'});
+    const m = 1.5;
+    const Q = board.create('point', [P.X() + 1, P.Y() + m], {visible: false});
+    board.create('line', [P, Q], {strokeColor: 'blue'});
+
+
+  board = JXG.JSXGraph.initBoard('box', {
+    boundingbox: [-5, 15, 5, -15],
+    axis: true
+  });
+
+  p1 = board.create('point', [1, 3], {name:'A'});
+  p2 = board.create('point', [4, 1], {name:'B'});
+  line = board.create('line', [p1, p2]);
+
+
+   // 定义函数
+  const f = function(x) {
+    return 5*Math.sin(x) + Math.cos(5*x) ;  // 你可以换成别的函数，例如 Math.cos(x), x*x, Math.exp(x) 等
+  };
+
+  // 绘制函数图像
+  board.create('functiongraph', [f], {
+    strokeColor: 'blue',
+    strokeWidth: 2
+  });
+
+
+
+</script>
+
+<iframe width="640" height="360"
+  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+  title="YouTube video"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+
+
+
+
+<!-- 加载 hls.js 库 -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<video id="hls-video" width="640" height="360" controls></video>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.getElementById('hls-video');
+  const videoSrc = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";  // 替换成你的 m3u8 地址
+
+  if (Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource(videoSrc);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+      video.play();
+    });
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    // 对于 Safari 原生支持 m3u8
+    video.src = videoSrc;
+    video.addEventListener('loadedmetadata', function () {
+      video.play();
+    });
+  } else {
+    alert("你的浏览器不支持播放 m3u8 视频");
+  }
+});
+</script>
+

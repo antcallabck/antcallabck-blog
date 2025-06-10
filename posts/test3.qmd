@@ -3,6 +3,7 @@ title: "多种图文混排示例"
 categories: [教程]
 tags: [教程1]
 format: html
+date: 2025-06-09
 ---
 
 # 1. 左图右文（经典对称）
