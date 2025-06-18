@@ -1,0 +1,125 @@
+---
+title: "三心演示"
+format: html
+---
+<div id="box" style="width: 800px; height: 600px;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+
+<script>
+  const board = JXG.JSXGraph.initBoard('box', {
+      boundingbox: [-5, 5, 5, -5],
+      axis: true,
+      showCopyright: false,
+    });
+
+    // 三角形顶点
+    const A = board.create('point', [0, 0], { name: 'A', size: 3, color: 'red' });
+    const B = board.create('point', [4, 0], { name: 'B', size: 3, color: 'red' });
+    const C = board.create('point', [2, 3], { name: 'C', size: 3, color: 'red' });
+
+    // 三角形边
+    const AB = board.create('line', [A, B], { straightFirst: false, straightLast: false, strokeWidth: 2 });
+    const BC = board.create('line', [B, C], { straightFirst: false, straightLast: false, strokeWidth: 2 });
+    const CA = board.create('line', [C, A], { straightFirst: false, straightLast: false, strokeWidth: 2 });
+
+    // 计算距离函数
+    function dist(P, Q) {
+      return Math.hypot(P.X() - Q.X(), P.Y() - Q.Y());
+    }
+
+    // 三角形边长
+    const a = () => dist(B, C); // BC
+    const b = () => dist(A, C); // AC
+    const c = () => dist(A, B); // AB
+
+    // 面积 (海伦公式)
+    function triangleArea(a_, b_, c_) {
+      const s = (a_ + b_ + c_) / 2;
+      return Math.sqrt(s * (s - a_) * (s - b_) * (s - c_));
+    }
+
+    // 重心 G = (A + B + C) / 3
+    const G = board.create('point', [
+      () => (A.X() + B.X() + C.X()) / 3,
+      () => (A.Y() + B.Y() + C.Y()) / 3
+    ], { name: 'G', size: 3, color: 'blue' });
+
+    // 内心 I
+    const I = board.create('point', [
+      () => (a() * A.X() + b() * B.X() + c() * C.X()) / (a() + b() + c()),
+      () => (a() * A.Y() + b() * B.Y() + c() * C.Y()) / (a() + b() + c())
+    ], { name: 'I', size: 3, color: 'green' });
+
+    // 外心：垂直平分线交点
+    function midpoint(P, Q) {
+      return [
+        () => (P.X() + Q.X()) / 2,
+        () => (P.Y() + Q.Y()) / 2
+      ];
+    }
+
+    function perpendicularBisector(P, Q) {
+      const M = board.create('point', midpoint(P, Q), { visible: false });
+      const linePQ = board.create('line', [P, Q], { visible: false });
+      return board.create('perpendicular', [linePQ, M], { visible: false });
+    }
+
+    const perpBisectorAB = perpendicularBisector(A, B);
+    const perpBisectorBC = perpendicularBisector(B, C);
+    const perpBisectorCA = perpendicularBisector(C, A);
+
+    // 外心是两条垂直平分线的交点
+    const O = board.create('intersection', [perpBisectorAB, perpBisectorBC, 0], { name: 'O', size: 3, color: 'purple' });
+
+    // 绘制外接圆
+    board.create('circle', [
+      O,
+      () => dist(O, A)
+    ], { strokeColor: 'purple', dash: 2 });
+
+    // 内切圆半径 = 面积 / 半周长
+    const inradius = () => {
+      const aa = a();
+      const bb = b();
+      const cc = c();
+      const s = (aa + bb + cc) / 2;
+      return triangleArea(aa, bb, cc) / s;
+    };
+
+    // 绘制内切圆
+    board.create('circle', [
+      I,
+      inradius
+    ], { strokeColor: 'green', dash: 2 });
+
+    // ---------------------------
+    // 辅助线：重心的三条中线
+    function midpointPoint(P, Q) {
+      return board.create('point', [
+        () => (P.X() + Q.X()) / 2,
+        () => (P.Y() + Q.Y()) / 2
+      ], { visible: false });
+    }
+    const midBC = midpointPoint(B, C);
+    const midAC = midpointPoint(A, C);
+    const midAB = midpointPoint(A, B);
+
+    board.create('line', [A, midBC], { strokeColor: 'blue', dash: 1 });
+    board.create('line', [B, midAC], { strokeColor: 'blue', dash: 1 });
+    board.create('line', [C, midAB], { strokeColor: 'blue', dash: 1 });
+
+    // 辅助线：内心的三条角平分线
+    // 用三角形的角平分线定义法
+    // 角平分线顶点为三角形顶点，经过内心I
+    board.create('line', [A, I], { strokeColor: 'green', dash: 1 });
+    board.create('line', [B, I], { strokeColor: 'green', dash: 1 });
+    board.create('line', [C, I], { strokeColor: 'green', dash: 1 });
+
+    // 辅助线：外心的三条垂直平分线（可见）
+    perpBisectorAB.setAttribute({ visible: true, strokeColor: 'purple', dash: 1 });
+    perpBisectorBC.setAttribute({ visible: true, strokeColor: 'purple', dash: 1 });
+    perpBisectorCA.setAttribute({ visible: true, strokeColor: 'purple', dash: 1 });
+
+</script>

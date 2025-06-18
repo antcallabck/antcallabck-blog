@@ -4,3 +4,12 @@ figure figcaption {
   color: #666;
   text-align: center;
 }
+p {
+  text-indent: 2em; /* 段首缩进两个字宽 */
+  margin-top: 0;
+  margin-bottom: 0em;
+ 
+}
+h1, h2, h3 {
+  text-align: center;
+}
