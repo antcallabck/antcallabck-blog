@@ -1,0 +1,42 @@
+---
+title: "Nice to meet you"
+date: 2025-06-09
+categories: [英语,新概念英语]
+tags: [课文]
+format: html
+---
+MR. BLAKE : Good morning.<audiobutton id="062cfca2033e46a23950ad61925f8a45" /></br>
+STUDENTS: Good morning, Mr. Blake.<audiobutton id="e27d00b159d0c9647cceb6ab64e30011" /></br>
+MR. BLAKE :</br>
+    This is Miss Sophie Dupont.<audiobutton id="5577244d5ac29f52f76b00f4652f45a2" /></br>
+    Sophie is a new student.<audiobutton id="3a532f071b23d9586596680887d24925" /></br>
+    She is French.<audiobutton id="ce449f32f7d649baafbc8708b1a3a44a" /></br>
+MR. BLAKE :</br>
+    Sophie, this is Hans.<audiobutton id="9f8897494ae69f7e9ae4fbf3f7e01513" /></br>
+    He is German.<audiobutton id="dd6ec99c2d02d7bbc279fbb7674776e3" /></br>
+HANS : Nice to meet you.<audiobutton id="67bd7ea9f29298144bcc5d3725f560a6" /></br>
+MR. BLAKE :</br>
+    And this is Naoko.<audiobutton id="0769955efdc8f12c4f45879150db881d" /></br>
+    She's Japanese.<audiobutton id="66620e592bbffc93249211d303368089" /></br>
+NAOKO : Nice to meet you.<audiobutton id="67bd7ea9f29298144bcc5d3725f560a6" /></br>
+MR. BLAKE :</br>
+    And this is Chang-woo.<audiobutton id="28d2e20063cce16505faa8c7943b474a" /></br>
+    He's Korean.<audiobutton id="bc35f68d96492b6cc87fa99f44beb618" /></br>
+CHANG-WOO : Nice to meet you.<audiobutton id="67bd7ea9f29298144bcc5d3725f560a6" /></br>
+MR. BLAKE :</br>
+    And this is Luming.<audiobutton id="cc2d62b7579b8d3406a7222ada7c8ee4" /></br>
+    He's Chinese.<audiobutton id="1274d64d628fcc6cec2ecbd0cdd09ce1" /></br>
+LUMING : Nice to meet you.<audiobutton id="67bd7ea9f29298144bcc5d3725f560a6" /></br>
+MR. BLAKE :</br>
+    And this is Xiaohui.<audiobutton id="e72aeea893c0f7f1517f8005dbfa2599" /></br>
+    She's Chinese, too.<audiobutton id="9a29ed9cf5e94a4cc34e95e9aec69db0" /></br>
+XIAOHUI : Nice to meet you<audiobutton id="7f512576ffc1b78ae7210b1645bfe4cb" /></br>
+
+<audio id="audio-player"></audio>
+<script>
+function playAudio(id) {
+const audio = document.getElementById("audio-player");
+audio.src = `/static/mp3/${id}.mp3`;
+audio.play();
+}
+</script>

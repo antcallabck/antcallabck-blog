@@ -1,0 +1,330 @@
+---
+title: "C 语言入门教程"
+date: 2025-06-09
+categories: [编程]
+tags: [c/c++, 教程]
+format: html
+
+---
+# C 语言入门教程
+
+ 
+> 本教程适合零基础入门 C 语言学习者，内容涵盖从语法基础到数组和函数等常用知识。
+
+---
+
+## 📚 目录
+
+1. [C 语言简介](#c-语言简介)  
+2. [开发环境配置](#开发环境配置)  
+3. [第一个 C 程序](#第一个-c-程序)  
+4. [基本语法和注释](#基本语法和注释)  
+5. [变量与数据类型](#变量与数据类型)  
+6. [输入输出](#输入输出)  
+7. [运算符](#运算符)  
+8. [条件语句](#条件语句)  
+9. [循环语句](#循环语句)  
+10. [函数](#函数)  
+11. [数组](#数组)  
+12. [附录：常见错误](#附录常见错误)  
+13. [下一步建议](#下一步建议)
+
+---
+
+## C 语言简介
+
+C 语言是一种通用的过程式编程语言，由 Dennis Ritchie 于 1972 年在贝尔实验室开发。  
+特点：
+- 简洁高效
+- 靠近底层，能操作内存
+- 常用于操作系统、驱动、嵌入式开发
+
+---
+
+## 开发环境配置
+
+### Windows
+
+- 推荐工具：
+  - [Code::Blocks](http://www.codeblocks.org/)
+  - VSCode + MinGW
+- 安装 MinGW 后添加 `bin` 目录到环境变量
+
+### macOS / Linux
+
+```bash
+# 安装 GCC 编译器
+sudo apt install gcc        # Ubuntu/Debian
+brew install gcc            # macOS
+```
+
+---
+
+## 第一个 C 程序
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello, world!\n");
+    return 0;
+}
+```
+
+### 编译运行
+
+```bash
+gcc hello.c -o hello
+./hello
+```
+
+输出：
+
+```
+Hello, world!
+```
+
+---
+
+## 基本语法和注释
+
+### main 函数
+
+程序从 `main()` 开始执行。
+
+### 注释方式
+
+```c
+// 单行注释
+
+/*
+   多行注释
+*/
+```
+
+---
+
+## 变量与数据类型
+
+```c
+int age = 18;
+float height = 1.75;
+char grade = 'A';
+```
+
+### 常见类型
+
+| 类型     | 说明           | 示例        |
+|----------|----------------|-------------|
+| int      | 整型           | `int a = 10;` |
+| float    | 单精度浮点型   | `float f = 3.14;` |
+| double   | 双精度浮点型   | `double d = 3.1415;` |
+| char     | 字符型         | `char c = 'A';` |
+
+---
+
+## 输入输出
+
+### 输出：`printf`
+
+```c
+printf("年龄是 %d 岁\n", age);
+```
+
+| 占位符 | 含义       |
+|--------|------------|
+| %d     | int 整数   |
+| %f     | float/double |
+| %c     | 字符       |
+| %s     | 字符串     |
+
+### 输入：`scanf`
+
+```c
+int age;
+scanf("%d", &age);
+```
+
+---
+
+## 运算符
+
+### 算术运算符
+
+```c
++ - * / %
+```
+
+### 比较运算符
+
+```c
+== != > < >= <=
+```
+
+### 逻辑运算符
+
+```c
+&& || !
+```
+
+---
+
+## 条件语句
+
+### if / else
+
+```c
+if (age >= 18) {
+    printf("成年人\n");
+} else {
+    printf("未成年人\n");
+}
+```
+
+### if - else if - else
+
+```c
+if (score >= 90) {
+    printf("优秀\n");
+} else if (score >= 60) {
+    printf("及格\n");
+} else {
+    printf("不及格\n");
+}
+```
+
+### switch 语句
+
+```c
+switch (option) {
+    case 1:
+        printf("选项1\n");
+        break;
+    case 2:
+        printf("选项2\n");
+        break;
+    default:
+        printf("其他\n");
+}
+```
+
+---
+
+## 循环语句
+
+### for 循环
+
+```c
+for (int i = 0; i < 5; i++) {
+    printf("%d\n", i);
+}
+```
+
+### while 循环
+
+```c
+int i = 0;
+while (i < 5) {
+    printf("%d\n", i);
+    i++;
+}
+```
+
+### do...while 循环
+
+```c
+int i = 0;
+do {
+    printf("%d\n", i);
+    i++;
+} while (i < 5);
+```
+
+---
+
+## 函数
+
+### 定义和调用函数
+
+```c
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(3, 4);
+    printf("结果是：%d\n", result);
+}
+```
+
+### 函数声明
+
+```c
+int add(int a, int b); // 声明
+
+int main() {
+    printf("%d", add(1, 2));
+}
+
+int add(int a, int b) {
+    return a + b;
+}
+```
+
+---
+
+## 数组
+
+### 一维数组
+
+```c
+int nums[5] = {1, 2, 3, 4, 5};
+for (int i = 0; i < 5; i++) {
+    printf("%d ", nums[i]);
+}
+```
+
+### 字符数组（字符串）
+
+```c
+char name[] = "Tom";
+printf("名字是：%s\n", name);
+```
+
+### 二维数组
+
+```c
+int matrix[2][3] = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+```
+
+---
+
+## 附录：常见错误
+
+| 错误提示                            | 原因                  |
+|------------------------------------|-----------------------|
+| `expected ';' before 'return'`     | 忘记在上一行加分号     |
+| `undefined reference to 'main'`    | 没有 main 函数         |
+| `segmentation fault`               | 内存访问非法（如数组越界） |
+| `scanf("%d", age);`                | 应该写成 `&age`       |
+
+---
+
+## 下一步建议
+
+继续深入学习以下内容：
+
+- 指针（`int *p = &a;`）
+- 结构体（`struct`）
+- 文件操作（`fopen`, `fread`, `fwrite`）
+- 链表
+- 动态内存（`malloc`, `free`）
+- 编写小项目（如猜数字游戏、学生成绩管理系统）
+
+---
+
+> 祝你学习顺利，持续进步！  
+> 有任何问题都可以随时提问 😊

@@ -1,0 +1,34 @@
+---
+title: "第一册第五课"
+date: 2025-06-09
+categories: [英语,新概念英语]
+tags: [单词]
+format: html
+---
+
+| 单词      | 音标          | 词性     | 释义     | 播放                                 |
+|-----------|---------------|----------|----------|------------------------------------|
+| Mr.   | /'mists/  | —    | 先生 | <button onclick="playAudio('Mr')">📢</button> |
+| good      | /ɡʊd/         | adj.     | 好       | <button onclick="playAudio('good')">📢</button> |
+| morning   | /'mxnig/      | n.       | 早晨     | <button onclick="playAudio('morning')">📢</button> |
+| Miss      | /mis/         | —        | 小姐     | <button onclick="playAudio('Miss')">📢</button>    |
+| new       | /nju:/        | adj.     | 新的     | <button onclick="playAudio('new')">📢</button>     |
+| student   | /'sljuidant/  | —        | 儿学生   | <button onclick="playAudio('student')">📢</button> |
+| French    | /frentj/      | adj.     | 法国人   | <button onclick="playAudio('French')">📢</button>  |
+| German    | /'djaiman/    | adj.     | 德国人   | <button onclick="playAudio('German')">📢</button>  |
+| nice      | /nais/        | adj.     | 美好的   | <button onclick="playAudio('nice')">📢</button>    |
+| meet      | /milt/        | v.       | 遇见     | <button onclick="playAudio('meet')">📢</button>    |
+| Japanese  | /aep'niiz/    | adj.&n.  | 日本人   | <button onclick="playAudio('Japanese')">📢</button>|
+| Korean    | /ka'nan/      | adj.&n.  | 韩国人   | <button onclick="playAudio('Korean')">📢</button>  |
+| Chinese   | /,tjai'ni:z/  | adj.&n.  | 中国人   | <button onclick="playAudio('Chinese')">📢</button> |
+| too       | /tu:/         | adv      | 也       | <button onclick="playAudio('too')">📢</button>     |
+
+<audio id="audio-player"></audio>
+
+<script>
+  function playAudio(word) {
+    const audio = document.getElementById("audio-player");
+    audio.src = `/static/mp3/${word}.mp3`;
+    audio.play();
+  }
+</script>

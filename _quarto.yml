@@ -24,6 +24,9 @@ format:
       - solar
     css: styles.css
     toc: true
+freeze: auto
+resources:
+  - static/
 
-
-
+filters:
+  - audiobutton.lua

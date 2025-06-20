@@ -1,0 +1,19 @@
+---
+title: "Lua Filter Test"
+categories: [英语,新概念英语]
+tags: [课文]
+format: html
+---
+
+Hello world!
+
+请点击这里播放音频<audiobutton id="line1" />
+
+<audio id="audio-player"></audio>
+<script>
+function playAudio(id) {
+  const audio = document.getElementById("audio-player");
+  audio.src = `/static/mp3/${id}.mp3`;
+  audio.play();
+}
+</script>
